@@ -3,7 +3,8 @@ package com.chenzt.shoppingbackend.mapper;
 import com.chenzt.shoppingbackend.entity.ShopGoods;
 import com.chenzt.shoppingbackend.entity.ShopGoodsExample;
 import java.util.List;
-import org.apache.ibatis.annotations.Param;
+
+import io.lettuce.core.dynamic.annotation.Param;
 
 public interface ShopGoodsMapper {
     /**
