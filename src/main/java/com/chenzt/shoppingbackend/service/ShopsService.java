@@ -8,6 +8,9 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 @Service
 public class ShopsService {
 
@@ -17,18 +20,20 @@ public class ShopsService {
     public int create(ShopsForm form, String userId) {
 
         Shop shop = new Shop();
-        BeanUtils.copyProperties(form, shop);
+        BeanUtils.copyProperties(form,shop);
         shop.setUserId(userId);
-
+       /* shop.setName(form.getName());
+        shop.setAddress(form.getAddress());
+        shop.setCategoryId(form.getCategoryId());
+        shop.setDescribe(form.getDescribe());*/
         String id = UuidUtil.createUuid();
         shop.setId(id);
-
-
         String status="0";
         shop.setStatus(status);
         String managerId="1";
         shop.setManagerId(managerId);
-        return shopMapper.insertSelective(shop);
+
+        return shopMapper.insert(shop);
     }
 
 

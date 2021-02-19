@@ -3,16 +3,16 @@ package com.chenzt.shoppingbackend.model.shops;
 public class ShopsForm {
     private String name;
     private String address;
-    private String cateId;
-    private String describe;
+    private String categoryId;
+    private String introduction;
 
 
-    public String getDescribe() {
-        return describe;
+    public String getIntroduction() {
+        return introduction;
     }
 
-    public void setDescribe(String describe) {
-        this.describe = describe;
+    public void setIntroduction(String introduction) {
+        this.introduction = introduction;
     }
 
     public String getName() {
@@ -31,11 +31,11 @@ public class ShopsForm {
         this.address = address;
     }
 
-    public String getCateId() {
-        return cateId;
+    public String getCategoryId() {
+        return categoryId;
     }
 
-    public void setCateId(String cateId) {
-        this.cateId = cateId;
+    public void setCategoryId(String categoryId) {
+        this.categoryId = categoryId;
     }
 }
