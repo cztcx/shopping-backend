@@ -1,12 +1,16 @@
 package com.chenzt.shoppingbackend.controller;
 
+import com.chenzt.shoppingbackend.model.shops.ShopCondition;
+import com.chenzt.shoppingbackend.model.shops.ShopModel;
 import com.chenzt.shoppingbackend.model.shops.ShopsForm;
 import com.chenzt.shoppingbackend.service.ShopsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
-public class ShopsController extends AbstractController{
+public class ShopsController extends AbstractController {
 
     @Autowired
     private ShopsService shopsService;
@@ -17,7 +21,26 @@ public class ShopsController extends AbstractController{
     @RequestMapping(value = "/users/{userId}/shops", method = RequestMethod.POST)
     public int create(@RequestBody ShopsForm shopsForm, @PathVariable String userId) {
         return shopsService.create(shopsForm, userId);
-
     }
+
+    /*
+     * 查看店铺信息
+     * */
+    @RequestMapping(value = "/shops/{shopId}", method = RequestMethod.GET)
+    public ShopModel retrieve(@PathVariable String shopId) {
+        return shopsService.retrieve(shopId);
+    }
+
+    /*
+     * 检索店铺
+     * */
+    @RequestMapping(value = "/shops", method = RequestMethod.GET)
+    public List<ShopModel> search(@RequestBody ShopCondition condition) {
+        return shopsService.search(condition);
+    }
+    /*
+     * 删除店铺
+     * */
+
 
 }
