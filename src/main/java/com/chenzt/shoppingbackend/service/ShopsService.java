@@ -78,5 +78,11 @@ public class ShopsService {
 
         return shopMapper.selectByExample(example).stream().map(shop -> retrieve(shop.getId())).collect(Collectors.toList());
     }
+    /*
+    * 删除店铺
+    * */
+    public int delete(String shopId){
+        return shopMapper.deleteByPrimaryKey(shopId);
+    }
 
 }

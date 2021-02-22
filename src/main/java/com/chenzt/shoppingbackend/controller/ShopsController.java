@@ -41,6 +41,10 @@ public class ShopsController extends AbstractController {
     /*
      * 删除店铺
      * */
+    @RequestMapping(value = "/shops/{shopId}", method = RequestMethod.DELETE)
+    public int delete(@PathVariable String shopId){
+        return shopsService.delete(shopId);
+    }
 
 
 }
