@@ -66,8 +66,8 @@
             <version>2.0.6</version>
         </dependency>
         <dependency>
-            <groupId>cn.itforce</groupId>
-            <artifactId>exam-backend</artifactId>
+            <groupId>com.chenzt</groupId>
+            <artifactId>shopping-backend</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
