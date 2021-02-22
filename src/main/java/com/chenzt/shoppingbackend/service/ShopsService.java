@@ -79,6 +79,20 @@ public class ShopsService {
         return shopMapper.selectByExample(example).stream().map(shop -> retrieve(shop.getId())).collect(Collectors.toList());
     }
     /*
+    * 修改店铺信息
+    * */
+    public int update(ShopsForm shopsForm, String userId){
+        ShopExample example = new ShopExample();
+        ShopExample.Criteria criteria = example.createCriteria();
+        criteria.andUserIdEqualTo(userId);
+        List<Shop> list = shopMapper.selectByExample(example);
+        String shopId = list.get(0).getId();
+        Shop shop = new Shop();
+        BeanUtils.copyProperties(shopsForm, shop);
+        shop.setId(shopId);
+        return shopMapper.updateByPrimaryKeySelective(shop);
+    }
+    /*
     * 删除店铺
     * */
     public int delete(String shopId){

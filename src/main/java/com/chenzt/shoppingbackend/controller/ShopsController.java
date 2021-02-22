@@ -38,6 +38,14 @@ public class ShopsController extends AbstractController {
     public List<ShopModel> search(@RequestBody ShopCondition condition) {
         return shopsService.search(condition);
     }
+
+    /*
+    * 修改店铺信息
+    * */
+    @RequestMapping(value = "/users/{userId}/shops", method = RequestMethod.PUT)
+    public int update(@RequestBody ShopsForm shopsForm, @PathVariable String userId){
+        return shopsService.update(shopsForm, userId);
+    }
     /*
      * 删除店铺
      * */
