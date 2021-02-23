@@ -4,7 +4,16 @@ public class UserForm {
     private String name;
     private String password;
     private String phone;
+    private String isseller;
     private String email;
+
+    public String getIsseller() {
+        return isseller;
+    }
+
+    public void setIsseller(String isseller) {
+        this.isseller = isseller;
+    }
 
     public String getName() {
         return name;

@@ -1,5 +1,6 @@
 package com.chenzt.shoppingbackend.controller;
 
+import com.chenzt.shoppingbackend.entity.User;
 import com.chenzt.shoppingbackend.model.users.UserForm;
 import com.chenzt.shoppingbackend.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +11,36 @@ public class UsersController extends AbstractController {
     @Autowired
     private UsersService usersService;
 
+    /*
+     * 用户注册
+     * */
     @RequestMapping(value = "/users", method = RequestMethod.POST)
     public int create(@RequestBody UserForm userForm) {
         return usersService.create(userForm);
     }
+
+    /*
+     * 查询用户信息
+     * */
+    @RequestMapping(value = "/users/{userId}", method = RequestMethod.GET)
+    public User create(@PathVariable String userId) {
+        return usersService.retrieve(userId);
+    }
+
+    /*
+     * 修改用户信息
+     * */
+    @RequestMapping(value = "/users/{userId}", method = RequestMethod.PUT)
+    public int update(@RequestBody UserForm userForm, @PathVariable String userId) {
+        return usersService.update(userForm, userId);
+    }
+
+    /*
+     * 注销用户
+     * */
+    @RequestMapping(value = "/users/{userId}", method = RequestMethod.DELETE)
+    public int delete(@PathVariable String userId) {
+        return usersService.delete(userId);
+    }
+
 }
