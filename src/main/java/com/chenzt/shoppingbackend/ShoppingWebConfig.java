@@ -10,12 +10,15 @@ import com.fasterxml.jackson.datatype.jsr310.ser.LocalTimeSerializer;
 import org.springframework.boot.autoconfigure.jackson.Jackson2ObjectMapperBuilderCustomizer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.filter.CorsFilter;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.time.format.DateTimeFormatter;
 
 @Configuration
-public class ExamWebConfig implements WebMvcConfigurer {
+public class ShoppingWebConfig implements WebMvcConfigurer {
 
     private static final String DATE_FORMAT = "yyyy-MM-dd";
     private static final String DATE_TIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
@@ -40,6 +43,32 @@ public class ExamWebConfig implements WebMvcConfigurer {
     @Bean
     public SqlCommonInterceptor dateTimeInterceptor() {
         return new SqlCommonInterceptor();
+    }
+
+    /**
+     * 跨域过滤器
+     *
+     * @return
+     */
+
+    @Bean
+
+    public CorsFilter corsFilter() {
+
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+
+        CorsConfiguration corsConfiguration = new CorsConfiguration();
+
+        corsConfiguration.addAllowedOrigin("*");
+
+        corsConfiguration.addAllowedHeader("*");
+
+        corsConfiguration.addAllowedMethod("*");
+
+        source.registerCorsConfiguration("/**", corsConfiguration);
+
+        return new CorsFilter(source);
+
     }
 
 }
