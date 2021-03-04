@@ -1,5 +1,6 @@
 package com.chenzt.shoppingbackend;
 
+import com.chenzt.shoppingbackend.interceptor.JWTInterceptor;
 import com.chenzt.shoppingbackend.interceptor.SqlCommonInterceptor;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
@@ -13,6 +14,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.time.format.DateTimeFormatter;
@@ -71,4 +73,10 @@ public class ShoppingWebConfig implements WebMvcConfigurer {
 
     }
 
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(new JWTInterceptor())
+                .addPathPatterns("/**")//其他接口都拦截验证
+                .excludePathPatterns("/v1/login");//登陆接口放行
+    }
 }
