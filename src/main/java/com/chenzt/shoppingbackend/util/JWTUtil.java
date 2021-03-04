@@ -7,27 +7,24 @@ import com.auth0.jwt.interfaces.DecodedJWT;
 
 import java.util.Calendar;
 import java.util.Map;
-
 /*
- * JSON Web Tokens  token工具类
- * */
+* JSON Web Tokens token工具类
+* */
 public class JWTUtil {
 
-    private static final String SINGURATER = "!D#E$R%TY7D8#899*UYJ&E*";//自己定义
+    private static final String SINGURATER = "!D#E$R%TY7D8#899*UYJ&E*";
 
     /*
      * 生成token    header.payload.singurater
      * */
     public static String getToken(Map<String, String> map) {
         Calendar instance = Calendar.getInstance();
-        instance.add(Calendar.SECOND, 30);//默认7天过期
+        instance.add(Calendar.DATE, 7);//默认7天过期
         // 创建builder
         JWTCreator.Builder builder = JWT.create();
 
         //payload
-        map.forEach((k, v) -> {
-            builder.withClaim(k, v);
-        });
+        map.forEach((k, v) -> builder.withClaim(k, v));
         String token = builder.withExpiresAt(instance.getTime())
                 .sign(Algorithm.HMAC256(SINGURATER));
 
