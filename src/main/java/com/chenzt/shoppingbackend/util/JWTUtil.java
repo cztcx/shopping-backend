@@ -13,7 +13,6 @@ import java.util.Map;
 public class JWTUtil {
 
     private static final String SINGURATER = "!D#E$R%TY7D8#899*UYJ&E*";
-
     /*
      * 生成token    header.payload.singurater
      * */
