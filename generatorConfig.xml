@@ -40,7 +40,7 @@
         <table tableName="goods"></table>
         <table tableName="img"></table>
         <table tableName="manager"></table>
-        <table tableName="order"></table>
+        <table tableName="orderr"></table>
         <table tableName="shop"></table>
         <table tableName="user"></table>
 
