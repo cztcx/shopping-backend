@@ -35,13 +35,18 @@
         </javaClientGenerator>
 
         <table tableName="address"></table>
+        <table tableName="approve"></table>
+        <table tableName="approve_history"></table>
         <table tableName="cart"></table>
         <table tableName="category"></table>
         <table tableName="goods"></table>
         <table tableName="img"></table>
         <table tableName="manager"></table>
+        <table tableName="new_arrivals"></table>
+        <table tableName="order_history"></table>
         <table tableName="orderr"></table>
         <table tableName="shop"></table>
+        <table tableName="shop_manage_history"></table>
         <table tableName="user"></table>
 
     </context>

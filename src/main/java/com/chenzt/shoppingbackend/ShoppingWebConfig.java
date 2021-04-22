@@ -77,6 +77,7 @@ public class ShoppingWebConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new JWTInterceptor())
                 .addPathPatterns("/**")//其他接口都拦截验证
-                .excludePathPatterns("/v1/login");//登陆接口放行
+                .excludePathPatterns("/v1/userLogin").excludePathPatterns("/v1/managerLogin");//登陆接口放行
+
     }
 }

@@ -42,7 +42,6 @@ public class ShopsService {
         String status = "0";
         shop.setStatus(status);
         String managerId = "1";
-        shop.setManagerId(managerId);
 
         return shopMapper.insert(shop);
     }
