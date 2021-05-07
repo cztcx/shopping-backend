@@ -36,10 +36,13 @@ public class UsersService {
     /*
      * 修改用户信息
      * */
-    public int update(UserForm userForm, String userId) {
+    public int update(UserForm userForm) {
         User user = new User();
+        user = userMapper.selectByPrimaryKey(userForm.getId());
         BeanUtils.copyProperties(userForm, user);
-        user.setId(userId);
+        user.setNickname(userForm.getNickname());
+        user.setEmail(userForm.getEmail());
+        user.setPhone(userForm.getPhone());
         return userMapper.updateByPrimaryKeySelective(user);
     }
     /*

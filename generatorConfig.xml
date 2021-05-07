@@ -48,6 +48,7 @@
         <table tableName="shop"></table>
         <table tableName="shop_manage_history"></table>
         <table tableName="user"></table>
+        <table tableName="flavor"></table>
 
     </context>
 </generatorConfiguration>

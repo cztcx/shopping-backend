@@ -34,6 +34,7 @@ public class LoginController extends AbstractController {
             map.put("state", true);
             map.put("msg", "认证成功");
             map.put("token", Token);
+            map.put("id", user.get(0).getId());
             map.put("username", user.get(0).getName());
             map.put("nickname", user.get(0).getNickname());
             map.put("isSeller", user.get(0).getIsseller());

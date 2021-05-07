@@ -1,34 +1,25 @@
 package com.chenzt.shoppingbackend.model.users;
 
 public class UserForm {
-    private String name;
-    private String password;
+    private String nickname;
     private String phone;
-    private String isseller;
     private String email;
+    private String id;
 
-    public String getIsseller() {
-        return isseller;
+    public String getId() {
+        return id;
     }
 
-    public void setIsseller(String isseller) {
-        this.isseller = isseller;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getNickname() {
+        return nickname;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 
     public String getPhone() {

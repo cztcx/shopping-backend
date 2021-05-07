@@ -23,16 +23,16 @@ public class UsersController extends AbstractController {
      * 查询用户信息
      * */
     @RequestMapping(value = "/users/{userId}", method = RequestMethod.GET)
-    public User create(@PathVariable String userId) {
+    public User retrieve(@PathVariable String userId) {
         return usersService.retrieve(userId);
     }
 
     /*
      * 修改用户信息
      * */
-    @RequestMapping(value = "/users/{userId}", method = RequestMethod.PUT)
-    public int update(@RequestBody UserForm userForm, @PathVariable String userId) {
-        return usersService.update(userForm, userId);
+    @RequestMapping(value = "/users/update", method = RequestMethod.PUT)
+    public int update(@RequestBody UserForm userForm) {
+        return usersService.update(userForm);
     }
 
     /*

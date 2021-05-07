@@ -18,7 +18,7 @@ public class JWTUtil {
      * */
     public static String getToken(Map<String, String> map) {
         Calendar instance = Calendar.getInstance();
-        instance.add(Calendar.DATE, 7);//默认7天过期
+        instance.add(Calendar.DATE, 1);//默认7天过期
         // 创建builder
         JWTCreator.Builder builder = JWT.create();
 
