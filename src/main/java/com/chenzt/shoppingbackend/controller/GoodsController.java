@@ -38,4 +38,36 @@ public class GoodsController extends AbstractController {
     public GoodsModel getGoodsByGoodsID(@PathVariable String goodsId) {
         return goodsService.getGoodsById(goodsId);
     }
+
+    /*
+     * 根据商铺ID得到上架商品
+     * */
+    @RequestMapping(value = "/goodsUpByShopID/{shopId}", method = RequestMethod.GET)
+    public List<GoodsModel> getGoodsByShopID(@PathVariable String shopId) {
+        return goodsService.getGoodsByShopId(shopId);
+    }
+    /*
+     * 根据商铺ID得到下架中的商品
+     * */
+    @RequestMapping(value = "/goodsDownByShopID/{shopId}", method = RequestMethod.GET)
+    public List<GoodsModel> getGoodsDownByShopID(@PathVariable String shopId) {
+        return goodsService.getGoodsDownByShopId(shopId);
+    }
+
+    /*
+     * 下架商品
+     * */
+    @RequestMapping(value = "/goodsDown/{goodsId}", method = RequestMethod.PUT)
+    public int goodsDown(@PathVariable String goodsId) {
+        return goodsService.goodsDown(goodsId);
+    }
+
+    /*
+     * 上架商品
+     * */
+    @RequestMapping(value = "/goodsUp/{goodsId}", method = RequestMethod.PUT)
+    public int goodsUp(@PathVariable String goodsId) {
+        return goodsService.goodsUp(goodsId);
+    }
+
 }

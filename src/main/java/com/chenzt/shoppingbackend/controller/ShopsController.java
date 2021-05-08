@@ -1,5 +1,6 @@
 package com.chenzt.shoppingbackend.controller;
 
+import com.chenzt.shoppingbackend.entity.Shop;
 import com.chenzt.shoppingbackend.model.shops.ShopCondition;
 import com.chenzt.shoppingbackend.model.shops.ShopModel;
 import com.chenzt.shoppingbackend.model.shops.ShopsForm;
@@ -37,6 +38,14 @@ public class ShopsController extends AbstractController {
     @RequestMapping(value = "/shops", method = RequestMethod.GET)
     public List<ShopModel> search(@RequestBody ShopCondition condition) {
         return shopsService.search(condition);
+    }
+
+    /*
+     * 检索店铺
+     * */
+    @RequestMapping(value = "/shops/{userId}/shop", method = RequestMethod.GET)
+    public Shop getShopByUserId(@PathVariable String userId) {
+        return shopsService.getShop(userId);
     }
 
     /*

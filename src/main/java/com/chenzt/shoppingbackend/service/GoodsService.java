@@ -77,6 +77,72 @@ public class GoodsService {
         return goodsModelList;
     }
 
+    public List<GoodsModel> getGoodsByShopId(String shopId) {
+        List<GoodsModel> goodsModelList = new ArrayList<>();
+        GoodsExample goodsExample = new GoodsExample();
+        GoodsExample.Criteria criteria = goodsExample.createCriteria();
+        String status = "1";
+        criteria.andShopIdEqualTo(shopId);
+        criteria.andStatusEqualTo(status);
+        List<Goods> goodsList = goodsMapper.selectByExample(goodsExample);
+        for (Goods goods : goodsList) {
+            GoodsModel goodsModel = new GoodsModel();
+            String goodsId = goods.getId();
+            FlavorExample flavorExample = new FlavorExample();
+            FlavorExample.Criteria FCriteria = flavorExample.createCriteria();
+            FCriteria.andGoodsIdEqualTo(goodsId);
+            List<Flavor> flavorList = flavorMapper.selectByExample(flavorExample);
+            ImgExample imgExample = new ImgExample();
+            ImgExample.Criteria criteria1 = imgExample.createCriteria();
+            criteria1.andGoodsIdEqualTo(goodsId);
+            List<Img> imgList = imgMapper.selectByExample(imgExample);
+            goodsModel.setFlavorList(flavorList);
+            goodsModel.setGoods(goods);
+            goodsModel.setImgList(imgList);
+            goodsModelList.add(goodsModel);
+        }
+        return goodsModelList;
+    }
+
+    public List<GoodsModel> getGoodsDownByShopId(String shopId) {
+        List<GoodsModel> goodsModelList = new ArrayList<>();
+        GoodsExample goodsExample = new GoodsExample();
+        GoodsExample.Criteria criteria = goodsExample.createCriteria();
+        String status = "0";
+        criteria.andShopIdEqualTo(shopId);
+        criteria.andStatusEqualTo(status);
+        List<Goods> goodsList = goodsMapper.selectByExample(goodsExample);
+        for (Goods goods : goodsList) {
+            GoodsModel goodsModel = new GoodsModel();
+            String goodsId = goods.getId();
+            FlavorExample flavorExample = new FlavorExample();
+            FlavorExample.Criteria FCriteria = flavorExample.createCriteria();
+            FCriteria.andGoodsIdEqualTo(goodsId);
+            List<Flavor> flavorList = flavorMapper.selectByExample(flavorExample);
+            ImgExample imgExample = new ImgExample();
+            ImgExample.Criteria criteria1 = imgExample.createCriteria();
+            criteria1.andGoodsIdEqualTo(goodsId);
+            List<Img> imgList = imgMapper.selectByExample(imgExample);
+            goodsModel.setFlavorList(flavorList);
+            goodsModel.setGoods(goods);
+            goodsModel.setImgList(imgList);
+            goodsModelList.add(goodsModel);
+        }
+        return goodsModelList;
+    }
+
+    public int goodsDown(String goodsId) {
+        Goods goods = goodsMapper.selectByPrimaryKey(goodsId);
+        goods.setStatus("0");
+        return goodsMapper.updateByPrimaryKey(goods);
+    }
+
+    public int goodsUp(String goodsId) {
+        Goods goods = goodsMapper.selectByPrimaryKey(goodsId);
+        goods.setStatus("1");
+        return goodsMapper.updateByPrimaryKey(goods);
+    }
+
     public GoodsModel getGoodsById(String goodsID) {
         Goods goods = goodsMapper.selectByPrimaryKey(goodsID);
         GoodsModel goodsModel = new GoodsModel();

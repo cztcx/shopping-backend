@@ -64,6 +64,14 @@ public class ShopsService {
         return shopModel;
     }
 
+    public Shop getShop(String userId){
+        ShopExample shopExample = new ShopExample();
+        ShopExample.Criteria criteria = shopExample.createCriteria();
+        criteria.andUserIdEqualTo(userId);
+        List<Shop> shopList = shopMapper.selectByExample(shopExample);
+        return shopList.get(0);
+    }
+
     /*
      * 检索商铺
      * */

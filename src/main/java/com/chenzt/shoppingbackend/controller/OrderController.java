@@ -33,10 +33,18 @@ public class OrderController extends AbstractController{
     }
 
     /*
-     * 添加订单
+     * 得到订单
      * */
     @RequestMapping(value = "user/getOrders/{userId}", method = RequestMethod.GET)
     public List<Orderr> getUserOrders(@PathVariable String userId) {
       return orderService.getUserOrders(userId);
+    }
+
+    /*
+    *  用户确认收货
+    * */
+    @RequestMapping(value = "user/receive/{orderId}", method = RequestMethod.DELETE)
+    public int receiveGoods(@PathVariable String orderId) {
+        return orderService.receiveGoods(orderId);
     }
 }
